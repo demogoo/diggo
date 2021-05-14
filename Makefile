@@ -1,7 +1,7 @@
 .PHONY: serve subscribe
 
-serve:
-	@go run main.go serve
+build:
+	@go build ./... -o bin/server
 
-subscribe:
-	@go run main.go subscribe
+run:
+	@go run main.go

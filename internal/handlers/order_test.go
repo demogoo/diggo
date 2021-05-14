@@ -11,6 +11,7 @@ import (
 	"github.com/demogoo/diggo/internal/data"
 	"github.com/demogoo/diggo/internal/models"
 	"github.com/demogoo/diggo/internal/services"
+	"github.com/demogoo/diggo/internal/storage"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 )
@@ -19,7 +20,8 @@ func TestOrderList(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 
 	config := config.NewConfig()
-	service := services.NewOrderService(config)
+	cache := storage.NewCacheConn(config)
+	service := services.NewOrderService(cache)
 	handler := NewOrderHandler(service)
 
 	e := gin.Default()

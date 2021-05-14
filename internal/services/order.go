@@ -1,17 +1,17 @@
 package services
 
 import (
-	"github.com/demogoo/diggo/internal/config"
 	"github.com/demogoo/diggo/internal/data"
 	"github.com/demogoo/diggo/internal/models"
+	"github.com/demogoo/diggo/internal/storage"
 )
 
 type OrderService struct {
-	config *config.Config
+	Cache *storage.CacheConn
 }
 
-func NewOrderService(config *config.Config) *OrderService {
-	return &OrderService{config: config}
+func NewOrderService(cache *storage.CacheConn) *OrderService {
+	return &OrderService{Cache: cache}
 }
 
 func (m *OrderService) GetAll() []*models.Order {

@@ -7,3 +7,7 @@ import (
 type DBConn struct {
 	Conf *config.Config
 }
+
+func NewDBConn(conf *config.Config) *DBConn {
+	return &DBConn{Conf: conf}
+}

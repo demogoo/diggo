@@ -1,17 +1,17 @@
 package services
 
 import (
-	"github.com/demogoo/diggo/internal/config"
 	"github.com/demogoo/diggo/internal/data"
 	"github.com/demogoo/diggo/internal/models"
+	"github.com/demogoo/diggo/internal/storage"
 )
 
 type ItemService struct {
-	config *config.Config
+	MongoDB *storage.MongoDBConn
 }
 
-func NewItemService(config *config.Config) *ItemService {
-	return &ItemService{config: config}
+func NewItemService(mongoDB *storage.MongoDBConn) *ItemService {
+	return &ItemService{MongoDB: mongoDB}
 }
 
 func (i *ItemService) FindAll() []*models.Item {

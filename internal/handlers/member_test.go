@@ -11,6 +11,7 @@ import (
 	"github.com/demogoo/diggo/internal/data"
 	"github.com/demogoo/diggo/internal/models"
 	"github.com/demogoo/diggo/internal/services"
+	"github.com/demogoo/diggo/internal/storage"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 )
@@ -19,7 +20,8 @@ func TestMemberList(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 
 	config := config.NewConfig()
-	service := services.NewMemberService(config)
+	dbConn := storage.NewDBConn(config)
+	service := services.NewMemberService(dbConn)
 	handler := NewMemberHandler(service)
 
 	e := gin.Default()
