@@ -1,4 +1,4 @@
-.PHONY: serve subscribe
+.PHONY: build run
 
 build:
 	@go build ./... -o bin/server
